@@ -48,3 +48,10 @@ img {
 .my-btn.btn-next{
     bottom: 0;
 }
+
+
+.active{
+    opacity: 20%;
+
+
+}
