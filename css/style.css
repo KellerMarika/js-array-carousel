@@ -8,6 +8,9 @@ height: 35vw;
     overflow: hidden;
 }
 
+#slider-container{
+    height: 100%;
+}
 
 img {
 object-fit: cover;
