@@ -35,41 +35,21 @@ const images = [
 //console.log(images);
 
 
-/* inserisco separatamente le immagini nei diversi contenitori per poter customizzare le classi */
 
 /* inserisco le immagini nelle thumbnails */
 for (i = 0; i < images.length; i++) {
-    console.log(i);
-
-    /* appena comincia il ciclo*/
-    /* creo un elemento */
-    const thumbnail_El = document.createElement("div");
-    console.log(thumbnail_El)
-    /* a cui asssegno una classe */
-    thumbnail_El.classList.add("thumnails");
-
-    /*se siamo alla prima posizione del ciclo */
-    if (i === 0) {
-        active = "active"
-
-        /* ne assegno anche un'altra (active stilizzata in css) */
-        thumbnail_El.classList.add("active");
-    }
-
-/* CONTEMPORANEAMENTE (perchè è procedurale) */
-
- /* nel contenitore stampo ogni elemento creato incrementato dell'immagine dell'array con indice ===i */
-     thumbnailsContainer_El.innerHTML+= thumbnail_El.innerHTML += images[i];
 }
 
+    /***** appena comincia il ciclo ******************/
 
 
 
 
-/* INIZIO FUNZIONE NEXT  ***************************************/
+    /* INIZIO FUNZIONE NEXT  ***************************************/
 
-btnNext.addEventListener("click", function () {
-    counter += 1
+    btnNext.addEventListener("click", function () {
+        counter += 1
 
 
-});
+    });
+
