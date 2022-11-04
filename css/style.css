@@ -1,20 +1,50 @@
-*{border: 1px solid red;}
-
-
-
-.container .row {
-/* si allunga in base alla larghezza */
-height: 35vw;
-    overflow: hidden;
+* {
+    border: 1px solid red;
 }
 
-#slider-container{
-    height: 100%;
+section{
+    position: relative;
+    transform: translateY(20%);
 }
 
 img {
-object-fit: cover;
-object-position: center;
-width: 100%;
-height: 20%;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 20%;
+}
+
+
+/********* CONTAINERS ********************/
+.container .row {
+    /* si allunga in base alla larghezza */
+    height: 35vw;
+    overflow: hidden;
+}
+
+#slider-container {
+    height: 100%;
+}
+
+
+/*** CLASS UTILITIES ************************/
+.my-btn{
+    position: absolute;
+    width: fit-content;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    opacity: .7;
+    background-color: brown;
+    color: white;
+    font-size: 1.6rem;
+}
+.my-btn:hover{
+    opacity: 1;
+}
+
+.my-btn.btn-next{
+    bottom: 0;
 }

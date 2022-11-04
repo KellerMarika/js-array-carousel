@@ -4,12 +4,14 @@
 
 /* SLIDER CONTAINER */
 const sliderContainer_El = document.getElementById("slider-container");
-console.log(sliderContainer_El);
+//console.log(sliderContainer_El);
+
 /* THUMBNAILS CONTAINER */
 const thumbnailsContainer_El = document.querySelector("#thumbnails-container .row");
-console.log(thumbnailsContainer_El);
+//console.log(thumbnailsContainer_El);
 
-/* array con immagini */
+
+/* ARRAY IMMAGINI */
 const images = [
     `<img src="/img/01.webp" alt="" >`
     , `<img src="/img/02.webp" alt="" >`
@@ -17,11 +19,19 @@ const images = [
     , `<img src="/img/04.webp" alt="" >`
     , `<img src="/img/05.webp" alt="" >`
 ]
-console.log(images);
+//console.log(images);
 
 /* inserisco le immagini nello slider e nelle thumbnails */
- for (i = 0; i < images.length; i++) {
-    sliderContainer_El.innerHTML+= images[i];
-    thumbnailsContainer_El.innerHTML+=images[i];
+for (i = 0; i < images.length; i++) {
+    sliderContainer_El.innerHTML += images[i];
+    thumbnailsContainer_El.innerHTML += images[i];
 }
+
+/****** BOTTONI *******************************/
+
+
+const btnPrev = document.querySelector(".btn-preview");
+//console.log(btnPrev);
+const btnNext = document.querySelector(".btn-next");
+//console.log(btnNext);
 
