@@ -180,24 +180,47 @@ for (i = 0; i < images.length; i++) {
 
     //tumb che attivo al click
     let thumbnailBtn = document.querySelector(`#thumbnails-container :nth-child(${i + 1})`);
-    console.log(thumbnailBtn, "thumbnailBtn");
+    //console.log(thumbnailBtn, "thumbnailBtn");
 
     //array tutte le altre thumb
-    let thumbnailUnactive = document.querySelectorAll(`#thumbnails-container img:not(:nth-child(${i + 1}))`);
-    console.log(thumbnailUnactive, "thumbnail-to-disactivate");
+    let thumbnailsUnactive = document.querySelectorAll(`#thumbnails-container img:not(:nth-child(${i + 1}))`);
+
+    //console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
 
 
     //slide che corrisponde alla tumb che cliccherò
     let sliderImg = document.querySelector(`#slider-container :nth-child(${i + 1})`);
-    console.log(sliderImg, " sliderImg");
+    //console.log(sliderImg, " sliderImg");
 
     //array tutte le altre slider img da nascondere
     let sliderImagesInvisible = document.querySelectorAll(`#slider-container img:not(:nth-child(${i + 1}))`);
-    console.log(sliderImagesInvisible, "sliderImages-to-disactivate");
+    //console.log(sliderImagesInvisible, "sliderImages-to-disactivate");
+
+    thumbnailBtn.addEventListener("click", function () {
+
+        sliderImg.classList.remove("visually-hidden");
+        thumbnailBtn.classList.add("active");
 
 
+        /******** CICLE IN THE CICLE!!!  ***********************************************************/
+        /* non si fa così ma mi serviva */
+        /* scusa florian dovevo provarci! */
+        
+        for (ii = 0; ii < images.length - 1; ii++) {
 
+            /*      console.log("dentro for 2 CICLE IN THE CICLE .......................")
+                    console.log(i)
+                    console.log(ii)
+                    console.log("thumbnailsUnactive[ii]", thumbnailsUnactive[ii])
+                    console.log("thumbnailsUnactive[ii].className", thumbnailsUnactive[ii].className);
+                    console.log("thumbnailsUnactive[ii].classList", thumbnailsUnactive[ii].classList);
+                    thumbnailsUnactive[ii].classList.toggle("active", false)
+                    console.log("toggle su class list")
+                    console.log("thumbnailsUnactive[ii].className =", thumbnailsUnactive[ii].className);
+          */
+            thumbnailsUnactive[ii].classList.toggle("active", false);
+            sliderImagesInvisible[ii].classList.toggle("visually-hidden", true);
+        }
 
-
-
+    })
 }

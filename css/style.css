@@ -1,5 +1,8 @@
 * {}
 
+body{
+    font-family: 'Roboto', sans-serif;
+}
 .row {
     border-color: greenyellow;
 }
@@ -32,7 +35,7 @@ img {
     opacity: .5;
     background-color: rgb(255, 1, 1);
     color: white;
-    font-size: 1rem;
+    font-size: 1.4rem;
     z-index: 200;
     border: none;
 }
@@ -42,6 +45,20 @@ img {
     opacity: 1;
 }
 
+
+.thumbnail-img {
+    height: 20%;
+    aspect-ratio: 16/9;
+    filter: brightness(0.4);
+}
+
+.thumbnail-img.active {
+    filter: brightness(1);
+    border: 4px solid red;
+}
+.thumbnail-img:hover{
+    filter: brightness(1);
+}
 
 /********* CONTAINERS ********************/
 
@@ -53,14 +70,3 @@ img {
     overflow: hidden;
 }
 
-
-#thumbnails-container img {
-    height: 20%;
-    aspect-ratio: 16/9;
-    filter: brightness(0.4);
-}
-
-#thumbnails-container img.active {
-    filter: brightness(1);
-    border: 4px solid red;
-}
