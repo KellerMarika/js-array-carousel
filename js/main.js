@@ -78,60 +78,6 @@ for (i = 0; i < images.length; i++) {
 
 
 
-//console.log(btnNext)
-//console.log(btnPrev)
-
-
-
-/* INIZIO FUNZIONE NEXT  ***************************************/
-/* btnNext.addEventListener("click", function () {
-
-    // a ogni cick incremento il counter di 1. è lo stesso che scrivere counter+=1
-    counter += 1
-   // console.log("btnNext click",counter)
-
-
-    //lenght è =5 ma il counter parte da 0 quindi l'ultimo valore disponibile è lenght -1
-    //se il contatore del bottone è maggiore dlla lenght di images 
-    if (counter > (images.length - 1)) {
-       // console.log("counter if=", counter, images.length);
-
-        // ricomincia d'accapo___________________________________________________________________________________ci devo ragionare
-        counter = images.length - 1
-        btnNext.classList.add("disabled");
-        //console.log(btnNext);
-    }
-
-    //recupero la thumbnail corrispondente alla posizione start (al click diventa 1)
-    const oldActiveThumb = document.querySelector(`#thumbnails-container :nth-child(${counter})`);
-    //console.log(oldActiveThumb);
-    //recupero la thumbnail corrispondente alla posizione dopo il click (+1)
-    const currentActiveThumb = document.querySelector(`#thumbnails-container :nth-child(${counter + 1})`);
-    //console.log("currentActiveT =", currentActiveThumb);
-
-    // dopo il click rimuovo active dall'immagine 
-    oldActiveThumb.classList.remove("active");
-    // dopo il click rimuovo active dall'immagine default 
-    currentActiveThumb.classList.add("active")
-
-
-    //recupero la slide corrispondente alla posizione start (al click diventa 1)
-    const oldSliderImg = document.querySelector(`#slider-container :nth-child(${counter})`);
-
-    //recupero la slide corrispondente alla posizione dopo il click (+1)
-    const currentSliderImg = document.querySelector(`#slider-container :nth-child(${counter + 1})`);
-
-    // dopo il click rimuovo active dall'immagine 
-    oldSliderImg.classList.add("visually-hidden");
-    //console.log(oldSliderImg, oldSliderImg.classList);
-    // dopo il click rimuovo active dall'immagine default 
-    currentSliderImg.classList.remove("visually-hidden");
-    //console.log(currentSliderImg, currentSliderImg.classList);
-}); */
-
-
-
-
 /* INIZIO FUNZIONE NEXT  ***************************************/
 btnNext.addEventListener("click", function () {
 
@@ -228,3 +174,30 @@ btnPrev.addEventListener("click", function () {
 });
 
 
+//se schiaccio una thumbnail allora le altre si disattivano e viene mostrata la slide img corrispondente
+
+for (i = 0; i < images.length; i++) {
+
+    //tumb che attivo al click
+    let thumbnailBtn = document.querySelector(`#thumbnails-container :nth-child(${i + 1})`);
+    console.log(thumbnailBtn, "thumbnailBtn");
+
+    //array tutte le altre thumb
+    let thumbnailUnactive = document.querySelectorAll(`#thumbnails-container img:not(:nth-child(${i + 1}))`);
+    console.log(thumbnailUnactive, "thumbnail-to-disactivate");
+
+
+    //slide che corrisponde alla tumb che cliccherò
+    let sliderImg = document.querySelector(`#slider-container :nth-child(${i + 1})`);
+    console.log(sliderImg, " sliderImg");
+
+    //array tutte le altre slider img da nascondere
+    let sliderImagesInvisible = document.querySelectorAll(`#slider-container img:not(:nth-child(${i + 1}))`);
+    console.log(sliderImagesInvisible, "sliderImages-to-disactivate");
+
+
+
+
+
+
+}
