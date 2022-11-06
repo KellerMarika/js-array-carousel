@@ -26,12 +26,11 @@ let counter = 0;
 /* ARRAY IMMAGINI */
 
 const images = [
-    `<img src="img/img1.png" alt="1"> `
+     `<img src="img/img1.png" alt="1"> `
     , `<img src="img/img2.png" alt="1">`
     , `<img src="img/img3.png" alt="1">`
-
-
-    , `     <!---- FIRST FLOOR BLOCK ------------------------------------------------------>
+ 
+    ,`<!---- FIRST FLOOR BLOCK ------------------------------------------------------>
     <div class="f1-container position-relative">
         <!---- FIRST IMG ----------->
         <img class="wall f1 img-fluid" src="/BONUS/img/f1/1-wall.png" alt="">
@@ -44,14 +43,15 @@ const images = [
                 <path d="M436.5 3H172H11L6.5 194L105 196V427H271.5V326.5H405.5V162H436.5V3Z" fill="#D9D9D9"
                     fill-opacity="" stroke="" stroke-opacity="" stroke-width="" />
 
-                <path class="bath f1" d="M105.5 196L6.5 194L3 327.5H105.5V196Z" fill="#D9D9D9" fill-opacity=""
-                    stroke="" stroke-opacity="" stroke-width="" />
+                <path class="bath f1" d="M105.5 196L6.5 194L3 327.5H105.5V196Z" fill="#D9D9D9" fill-opacity="" stroke=""
+                    stroke-opacity="" stroke-width="" />
             </svg>
         </div>
     </div>`
+ 
 
 
-    , `  <!---- SECOND FLOOR BLOCK ------------------------------------------------------>
+    ,`<!---- SECOND FLOOR BLOCK ------------------------------------------------------>
     <div class="f2-container position-relative">
         <!---- SECOND IMG ----------->
         <img class="wall f1 img-fluid" src="/BONUS/img/f2/2-wall.png" alt="">
@@ -60,8 +60,8 @@ const images = [
             <!---- SECOND SVG GROUP----------->
             <svg width="440" height="429" viewBox="0 0 440 429" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-                <path class="study f2" d="M405.5 161H270.5V325.5H405.5V161Z" fill="#D9D9D9" fill-opacity=""
-                    stroke="" stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
+                <path class="study f2" d="M405.5 161H270.5V325.5H405.5V161Z" fill="#D9D9D9" fill-opacity="" stroke=""
+                    stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
 
                 <path class="room f2" d="M271 160.5V3H437V160.5H271Z" fill="#D9D9D9" fill-opacity="" stroke=""
                     stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
@@ -69,11 +69,12 @@ const images = [
                 <path class="corridor f2" d="M105.5 426V195H171.5V2.5H271V426H105.5Z" fill="#D9D9D9" fill-opacity=""
                     stroke="" stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
 
-                <path class="bath f2" d="M105.5 195L6.5 193L3 326.5H105.5V195Z" fill="#D9D9D9" fill-opacity=""
-                    stroke="" stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
+                <path class="bath f2" d="M105.5 195L6.5 193L3 326.5H105.5V195Z" fill="#D9D9D9" fill-opacity="" stroke=""
+                    stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
             </svg>
         </div>
     </div>`
+
 ]
 //console.log(images);
 

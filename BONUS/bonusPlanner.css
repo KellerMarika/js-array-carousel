@@ -2,6 +2,7 @@
 .f2-container {
     border: 1px solid red;
 }
+
 /*** PATH (elementi svg) ***********/
 
 path {
@@ -9,7 +10,7 @@ path {
     fill-opacity: 0;
 }
 
-#slider-container path {
+#slider-container path:hover {
     fill: aquamarine;
     fill-opacity: .4;
     stroke-opacity: 1;
@@ -25,20 +26,23 @@ path {
 
 /*** SVG ******************************/
 
-.svg-container{
+.svg-container {
     pointer-events: all;
     position: absolute;
-    transform: scale(75%) translateY(-10px) translateX(55px);
+    transform: scale(128%) translateY(112px) translateX(178px);
     top: 0;
     left: 0;
 }
-
 .svg-container.f1::before {
-    content: url(/f1/floorplan\ 1.png);
-}
+    content: url(/BONUS/img/f1/floorplan\ 1.png);
+    background-color: rgba(255, 255, 255, 0.329);
+    width: 200%;
+    }
 
 .svg-container.f2::before {
-    content: url(/f2/floorplan\ 2.png);
+    content: url(/BONUS/img/f2/floorplan\ 2.png);
+    background-color: rgba(255, 255, 255, 0.329);
+    width: 200%;
 }
 
 .svg-container::before {
