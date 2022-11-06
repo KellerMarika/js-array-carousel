@@ -26,14 +26,16 @@ let counter = 0;
 /* ARRAY IMMAGINI */
 
 const images = [
-     `<img src="img/img1.png" alt="1"> `
+    `<img src="img/img1.png" alt="1"> `
     , `<img src="img/img2.png" alt="1">`
     , `<img src="img/img3.png" alt="1">`
- 
-    ,`<!---- FIRST FLOOR BLOCK ------------------------------------------------------>
+
+    , `<!---- FIRST FLOOR BLOCK -------->
+
     <div class="f1-container position-relative">
-        <!---- FIRST IMG ----------->
+        <!---- FIRST IMG WALL ----------->
         <img class="wall f1 img-fluid" src="/BONUS/img/f1/1-wall.png" alt="">
+
         <!---- FIRST SVG GROUP----------->
         <div class="svg-container f1">
 
@@ -48,12 +50,10 @@ const images = [
             </svg>
         </div>
     </div>`
- 
 
-
-    ,`<!---- SECOND FLOOR BLOCK ------------------------------------------------------>
+    , `<!---- SECOND FLOOR BLOCK ------------------------------------------------------>
     <div class="f2-container position-relative">
-        <!---- SECOND IMG ----------->
+        <!---- SECOND IMG WALL ----------->
         <img class="wall f1 img-fluid" src="/BONUS/img/f2/2-wall.png" alt="">
         <!---- SECOND IMG ----------->
         <div class="svg-container f2">
@@ -79,7 +79,6 @@ const images = [
 //console.log(images);
 
 
-
 /************ THUBNAILS *****************************/
 
 for (i = 0; i < images.length; i++) {
@@ -93,18 +92,15 @@ for (i = 0; i < images.length; i++) {
     if (i === 0) {
         active = "active"
     }
+/* aggiungo una classe numerata per tenere  meglio traccia dei miei traffici sulla console */
+    const thumbnail_El = "thumbnail-img " + (i + 1)
 
-    const thumbnail_El = "thumbnail-img"
+    //stampo I DIV CON LE IMMAGINI E LE SVG INDENTATE. 
+    //è AI DIV CHE APPLICO LE classi appropriate
 
-    //stampo le immagini con le classi appropriate
-    //thumbnailsContainer_El.innerHTML += `<img src=${images[i]} class= "${thumbnail_El} ${active} ">`;
     thumbnailsContainer_El.innerHTML += `<div class= "${thumbnail_El} ${active} ">
-    ${images[i]} 
-    
+    ${images[i]}  
     </div>`;
-
-
-
 }
 
 
@@ -123,7 +119,9 @@ for (i = 0; i < images.length; i++) {
     }
 
     const slider_El = "slider-img"
-    //stampo le immagini con le classi appropriate
+    //stampo I DIV CON LE IMMAGINI E LE SVG INDENTATE. 
+    //è AI DIV CHE APPLICO LE classi appropriate
+
     sliderContainer_El.innerHTML += `<div class=" ${slider_El} ${visibility}"> 
     ${images[i]} 
     </div>`;
@@ -233,12 +231,12 @@ for (i = 0; i < images.length; i++) {
 
     //tumb che attivo al click
     let thumbnailBtn = document.querySelector(`#thumbnails-container :nth-child(${i + 1})`);
-    //console.log(thumbnailBtn, "thumbnailBtn");
+    console.log(thumbnailBtn, "thumbnailBtn");
 
     //array tutte le altre thumb
-    let thumbnailsUnactive = document.querySelectorAll(`#thumbnails-container img:not(:nth-child(${i + 1}))`);
+    let thumbnailsUnactive = document.querySelectorAll(`#thumbnails-container .thumbnail-img:not(:nth-child(${i + 1}))`);
 
-    //console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
+    console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
 
 
     //slide che corrisponde alla tumb che cliccherò
@@ -246,7 +244,7 @@ for (i = 0; i < images.length; i++) {
     //console.log(sliderImg, " sliderImg");
 
     //array tutte le altre slider img da nascondere
-    let sliderImagesInvisible = document.querySelectorAll(`#slider-container img:not(:nth-child(${i + 1}))`);
+    let sliderImagesInvisible = document.querySelectorAll(`#slider-container .slider-img:not(:nth-child(${i + 1}))`);
     //console.log(sliderImagesInvisible, "sliderImages-to-disactivate");
 
     thumbnailBtn.addEventListener("click", function () {
@@ -258,7 +256,7 @@ for (i = 0; i < images.length; i++) {
         /******** CICLE IN THE CICLE!!!  ***********************************************************/
         /* non si fa così ma mi serviva */
         /* scusa florian dovevo provarci! */
-        
+
         for (ii = 0; ii < images.length - 1; ii++) {
 
             /*      console.log("dentro for 2 CICLE IN THE CICLE .......................")
