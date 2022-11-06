@@ -1,0 +1,49 @@
+.f1-container,
+.f2-container {
+    border: 1px solid red;
+}
+/*** PATH (elementi svg) ***********/
+
+path {
+    fill: aquamarine;
+    fill-opacity: 0;
+}
+
+#slider-container path {
+    fill: aquamarine;
+    fill-opacity: .4;
+    stroke-opacity: 1;
+    stroke-width: 4;
+    stroke: rgb(8, 192, 137);
+}
+
+/*** MAIN Container ******************************/
+.main-container {
+    margin: auto;
+    margin-top: 500px;
+}
+
+/*** SVG ******************************/
+
+.svg-container{
+    pointer-events: all;
+    position: absolute;
+    transform: scale(75%) translateY(-10px) translateX(55px);
+    top: 0;
+    left: 0;
+}
+
+.svg-container.f1::before {
+    content: url(/f1/floorplan\ 1.png);
+}
+
+.svg-container.f2::before {
+    content: url(/f2/floorplan\ 2.png);
+}
+
+.svg-container::before {
+    position: absolute;
+    transform: translateX(-266px) translateY(-86px);
+    pointer-events: none;
+    z-index: -1;
+}
