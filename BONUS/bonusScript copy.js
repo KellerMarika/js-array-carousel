@@ -23,18 +23,17 @@ const btnNext = document.querySelector(".btn-next");
 /* contatore */
 let counter = 0;
 
-/* ARRAY IMMAGINI */
 
+/* ARRAY DIV */
 const images = [
-    `<img src="img/img1.png" alt="1"> `
-    , `<img src="img/img2.png" alt="1">`
-    , `<img src="img/img3.png" alt="1">`
-
+    `<img src="img/img1.png" alt="panoramica"> `
+    , `<img src="img/img2.png" alt="living">`
+    , `<img src="img/img3.png" alt="pergolato">`
     , `<!---- FIRST FLOOR BLOCK -------->
 
     <div class="f1-container position-relative">
         <!---- FIRST IMG WALL ----------->
-        <img class="wall f1 img-fluid" src="/BONUS/img/f1/1-wall.png" alt="">
+        <img class="wall f1 img-fluid" src="/BONUS/img/f1/1-wall.png" alt="top-view arredo PT">
 
         <!---- FIRST SVG GROUP----------->
         <div class="svg-container f1">
@@ -54,7 +53,7 @@ const images = [
     , `<!---- SECOND FLOOR BLOCK ------------------------------------------------------>
     <div class="f2-container position-relative">
         <!---- SECOND IMG WALL ----------->
-        <img class="wall f1 img-fluid" src="/BONUS/img/f2/2-wall.png" alt="">
+        <img class="wall f1 img-fluid" src="/BONUS/img/f2/2-wall.png" alt="top-view arredo 1P">
         <!---- SECOND IMG ----------->
         <div class="svg-container f2">
             <!---- SECOND SVG GROUP----------->
@@ -75,7 +74,23 @@ const images = [
         </div>
     </div>`
 
+
+
 ]
+
+/* ARRAY thumbnails-container:before */
+
+const thumbnailLabels = [`<h4 class="thumbnail-label img1">Facciata</h4>`
+    , `<h4 class="thumbnail-label img2">living</h4>`
+    , `<h4 class="thumbnail-label img3">pergolato</h4>`
+    , `<h4 class="thumbnail-label img4"> PT</h4> `
+    , `<h4 class="thumbnail-label img5"> 1P</h4>`
+]
+
+console.log(thumbnailLabels);
+
+
+
 //console.log(images);
 
 
@@ -92,7 +107,7 @@ for (i = 0; i < images.length; i++) {
     if (i === 0) {
         active = "active"
     }
-/* aggiungo una classe numerata per tenere  meglio traccia dei miei traffici sulla console */
+    /* aggiungo una classe numerata per tenere  meglio traccia dei miei traffici sulla console */
     const thumbnail_El = "thumbnail-img " + (i + 1)
 
     //stampo I DIV CON LE IMMAGINI E LE SVG INDENTATE. 
@@ -100,6 +115,7 @@ for (i = 0; i < images.length; i++) {
 
     thumbnailsContainer_El.innerHTML += `<div class= "${thumbnail_El} ${active} ">
     ${images[i]}  
+    ${thumbnailLabels[i]}
     </div>`;
 }
 
@@ -134,11 +150,11 @@ btnNext.addEventListener("click", function () {
 
     /* recuper le variabili Old prima del counter */
     //recupero la thumbnail corrispondente alla posizione start (al click diventa 1)
-    const oldActiveThumb = document.querySelector(`#thumbnails-container :nth-child(${counter + 1})`);
+    const oldActiveThumb = document.querySelector(`#thumbnails-container> :nth-child(${counter + 1})`);
     console.log("OLD T", oldActiveThumb);
 
     //recupero la slide corrispondente alla posizione start (al click diventa 1)
-    const oldSliderImg = document.querySelector(`#slider-container :nth-child(${counter + 1})`);
+    const oldSliderImg = document.querySelector(`#slider-container> :nth-child(${counter + 1})`);
 
     /* a ogni cick incremento il counter di 1. è lo stesso che scrivere counter+=1 */
     counter++
@@ -156,7 +172,7 @@ btnNext.addEventListener("click", function () {
     }
 
     //recupero la thumbnail corrispondente alla posizione dopo il click (+1)
-    const currentActiveThumb = document.querySelector(`#thumbnails-container :nth-child(${counter + 1})`);
+    const currentActiveThumb = document.querySelector(`#thumbnails-container> :nth-child(${counter + 1})`);
     console.log("currentActiveT =", currentActiveThumb);
 
     // dopo il click rimuovo active dall'immagine 
@@ -166,7 +182,7 @@ btnNext.addEventListener("click", function () {
 
 
     //recupero la slide corrispondente alla posizione dopo il click (+1)
-    const currentSliderImg = document.querySelector(`#slider-container :nth-child(${counter + 1})`);
+    const currentSliderImg = document.querySelector(`#slider-container> :nth-child(${counter + 1})`);
 
     // dopo il click rimuovo active dall'immagine 
     oldSliderImg.classList.add("visually-hidden");
@@ -182,11 +198,11 @@ btnNext.addEventListener("click", function () {
 btnPrev.addEventListener("click", function () {
     /* recuper le variabili Old prima del counter */
     //recupero la thumbnail corrispondente alla posizione start (al click diventa 1)
-    const oldActiveThumb = document.querySelector(`#thumbnails-container :nth-child(${counter + 1})`);
+    const oldActiveThumb = document.querySelector(`#thumbnails-container> :nth-child(${counter + 1})`);
     console.log("OLD T", oldActiveThumb);
 
     //recupero la slide corrispondente alla posizione start (al click diventa 1)
-    const oldSliderImg = document.querySelector(`#slider-container :nth-child(${counter + 1})`);
+    const oldSliderImg = document.querySelector(`#slider-container> :nth-child(${counter + 1})`);
 
     /* a ogni cick incremento il counter di 1. è lo stesso che scrivere counter+=1 */
     counter -= 1
@@ -204,8 +220,8 @@ btnPrev.addEventListener("click", function () {
     }
 
     //recupero la thumbnail corrispondente alla posizione dopo il click (+1)
-    const currentActiveThumb = document.querySelector(`#thumbnails-container :nth-child(${counter + 1})`);
-    console.log("currentActiveT =", currentActiveThumb);
+    const currentActiveThumb = document.querySelector(`#thumbnails-container> :nth-child(${counter + 1})`);
+    //console.log("currentActiveT =", currentActiveThumb);
 
     // dopo il click rimuovo active dall'immagine 
     oldActiveThumb.classList.remove("active");
@@ -214,7 +230,7 @@ btnPrev.addEventListener("click", function () {
 
 
     //recupero la slide corrispondente alla posizione dopo il click (+1)
-    const currentSliderImg = document.querySelector(`#slider-container :nth-child(${counter + 1})`);
+    const currentSliderImg = document.querySelector(`#slider-container> :nth-child(${counter + 1})`);
 
     // dopo il click rimuovo active dall'immagine 
     oldSliderImg.classList.add("visually-hidden");
@@ -230,24 +246,28 @@ btnPrev.addEventListener("click", function () {
 for (i = 0; i < images.length; i++) {
 
     //tumb che attivo al click
-    let thumbnailBtn = document.querySelector(`#thumbnails-container :nth-child(${i + 1})`);
-    console.log(thumbnailBtn, "thumbnailBtn");
+    let thumbnailBtn = document.querySelector(`#thumbnails-container> :nth-child(${i + 1})`);
+    //console.log(thumbnailBtn, "thumbnailBtn");
 
     //array tutte le altre thumb
-    let thumbnailsUnactive = document.querySelectorAll(`#thumbnails-container .thumbnail-img:not(:nth-child(${i + 1}))`);
+    let thumbnailsUnactive = document.querySelectorAll(`#thumbnails-container> .thumbnail-img:not(:nth-child(${i + 1}))`);
 
-    console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
+    // console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
 
 
     //slide che corrisponde alla tumb che cliccherò
-    let sliderImg = document.querySelector(`#slider-container :nth-child(${i + 1})`);
+    let sliderImg = document.querySelector(`#slider-container> :nth-child(${i + 1})`);
     //console.log(sliderImg, " sliderImg");
 
     //array tutte le altre slider img da nascondere
-    let sliderImagesInvisible = document.querySelectorAll(`#slider-container .slider-img:not(:nth-child(${i + 1}))`);
+    let sliderImagesInvisible = document.querySelectorAll(`#slider-container> .slider-img:not(:nth-child(${i + 1}))`);
     //console.log(sliderImagesInvisible, "sliderImages-to-disactivate");
 
     thumbnailBtn.addEventListener("click", function () {
+        console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
+
+
+
 
         sliderImg.classList.remove("visually-hidden");
         thumbnailBtn.classList.add("active");

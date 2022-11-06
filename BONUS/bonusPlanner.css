@@ -35,13 +35,18 @@ path {
 #slider-container .svg-container.f1::before {
     content: url(/BONUS/img/f1/floorplan\ 1.png);
     background-color: rgba(255, 255, 255, 0.329);
-    width: 200%;
+    width:300%;
+    pointer-events: none;
     }
 
     #slider-container .svg-container.f2::before {
     content: url(/BONUS/img/f2/floorplan\ 2.png);
     background-color: rgba(255, 255, 255, 0.329);
-    width: 200%;
+    width:300%;
+    pointer-events: none;
+}
+#thumbnails-container .svg-container{
+    display: none;
 }
 
 .svg-container::before {
@@ -50,3 +55,4 @@ path {
     pointer-events: none;
     z-index: -1;
 }
+
