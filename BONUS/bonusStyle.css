@@ -47,12 +47,12 @@ h4 {
 
 /* thumbnails (img contiente anche il label, sarebbe più corretto thumbnail-card */
 
-.thumbnail-img {
+.thumbnail-card {
     height: 20%;
     position: relative;
 }
 
-.thumbnail-img.active {
+.thumbnail-card.active {
     border: 6px solid red;
 }
 
@@ -69,19 +69,19 @@ h4 {
     margin: 0;
 }
 
-.thumbnail-img.active .thumbnail-label{
+.thumbnail-card.active .thumbnail-label{
 display: none;
 }
 
-.thumbnail-img img {
+.thumbnail-card img {
     filter: brightness(0.4);
 }
 
-.thumbnail-img.thumbnail-img.active img {
+.thumbnail-card.active img {
     filter: brightness(1);
 }
 
-.thumbnail-img:hover img {
+.thumbnail-card:hover img {
     filter: brightness(1);
 }
 

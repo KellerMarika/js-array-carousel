@@ -87,7 +87,7 @@ const thumbnailLabels = [`<h4 class="thumbnail-label img1">Facciata</h4>`
     , `<h4 class="thumbnail-label img5"> 1P</h4>`
 ]
 
-console.log(thumbnailLabels);
+//console.log(thumbnailLabels);
 
 
 
@@ -108,7 +108,7 @@ for (i = 0; i < images.length; i++) {
         active = "active"
     }
     /* aggiungo una classe numerata per tenere  meglio traccia dei miei traffici sulla console */
-    const thumbnail_El = "thumbnail-img " + (i + 1)
+    const thumbnail_El = "thumbnail-card " + (i + 1)
 
     //stampo I DIV CON LE IMMAGINI E LE SVG INDENTATE. 
     //è AI DIV CHE APPLICO LE classi appropriate
@@ -247,12 +247,12 @@ for (i = 0; i < images.length; i++) {
 
     //tumb che attivo al click
     let thumbnailBtn = document.querySelector(`#thumbnails-container> :nth-child(${i + 1})`);
-    //console.log(thumbnailBtn, "thumbnailBtn");
+    console.log(thumbnailBtn, "thumbnailBtn");
 
     //array tutte le altre thumb
-    let thumbnailsUnactive = document.querySelectorAll(`#thumbnails-container> .thumbnail-img:not(:nth-child(${i + 1}))`);
+    let thumbnailsUnactive = document.querySelectorAll(`#thumbnails-container> .thumbnail-card:not(:nth-child(${i + 1}))`);
 
-    // console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
+    console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
 
 
     //slide che corrisponde alla tumb che cliccherò
@@ -264,7 +264,7 @@ for (i = 0; i < images.length; i++) {
     //console.log(sliderImagesInvisible, "sliderImages-to-disactivate");
 
     thumbnailBtn.addEventListener("click", function () {
-        console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
+        //console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
 
 
 
