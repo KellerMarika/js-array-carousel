@@ -94,7 +94,7 @@ const thumbnailLabels = [`<h4 class="thumbnail-label img1">Facciata</h4>`
 //console.log(images);
 
 
-/************ THUBNAILS *****************************/
+//************ THUBNAILS *****************************___________________________________forse si potrebbero accorpare
 
 for (i = 0; i < images.length; i++) {
     // console.log(i);
@@ -120,7 +120,7 @@ for (i = 0; i < images.length; i++) {
 }
 
 
-/************ SLIDER CONTAINER (per effetti) *****************************/
+//************ SLIDER CONTAINER (per effetti) *****************************___________________________________forse si potrebbero accorpare
 
 for (i = 0; i < images.length; i++) {
     //console.log(i);
@@ -143,12 +143,99 @@ for (i = 0; i < images.length; i++) {
     </div>`;
 }
 
+////tutte le thumb button disponibili
+/* let thumbnailsAll = []
+console.log("t ALL", thumbnailsAll)
+ */
+//se schiaccio una thumbnail allora le altre si disattivano e viene mostrata la slide img corrispondente
+
+for (i = 0; i < images.length; i++) {
+
+    //tumb che attivo al click
+    let thumbnailBtn = document.querySelector(`#thumbnails-container> :nth-child(${i + 1})`);
+    //console.log(thumbnailBtn, "thumbnailBtn");
+
+/* 
+    ////pusho all'interno dell'array vuoto tutte le thumb button disponibili create nel ciclo
+    thumbnailsAll.push(thumbnailBtn);
+    console.log("t ALL", thumbnailsAll)
+ */
 
 
-/* INIZIO FUNZIONE NEXT  ***************************************/
+    //array tutte le altre thumb da disattivare
+    let thumbnailsUnactive = document.querySelectorAll(`#thumbnails-container> .thumbnail-card:not(:nth-child(${i + 1}))`);
+
+    //console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
+
+
+    //slide che corrisponde alla tumb che cliccherò
+    let sliderImg = document.querySelector(`#slider-container> :nth-child(${i + 1})`);
+    //console.log(sliderImg, " sliderImg");
+
+    //array tutte le altre slider img da nascondere
+    let sliderImagesInvisible = document.querySelectorAll(`#slider-container> .slider-img:not(:nth-child(${i + 1}))`);
+    //console.log(sliderImagesInvisible, "sliderImages-to-disactivate");
+/* 
+    console.log(counter, "counter in cilco prima di btntumb")
+    counter = 0 */
+    //quando clicco su una thumb
+   /*  thumbnailsAll[counter].addEventListener("click", function () { */
+    thumbnailBtn.addEventListener("click", function () {
+/*         console.log(couner, "counter dopo btntumb")
+        console.log(" thumbnailsAll[i]", thumbnailsAll[i])
+        counter = thumbnailBtn
+        console.log(counter, "counter dopo btntumb")
+ */
+        console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
+        console.log(thumbnailBtn, "thumbbutton")
+
+        //aggiungo lo stato active alla thumb
+        thumbnailBtn.classList.add("active");
+        //rimuovo la hodden alla slide corrispondente
+        sliderImg.classList.remove("visually-hidden");
+
+        /******** CICLE IN THE CICLE!!!  ***********************************************************/
+        /* non si fa così ma mi serviva */
+        /* scusa florian dovevo provarci! */
+
+
+        //ciclicamente dopo
+        for (ii = 0; ii < images.length - 1; ii++) {
+
+            /*      console.log("dentro for 2 CICLE IN THE CICLE .......................")
+                    console.log(i)
+                    console.log(ii)
+                    console.log("thumbnailsUnactive[ii]", thumbnailsUnactive[ii])
+                    console.log("thumbnailsUnactive[ii].className", thumbnailsUnactive[ii].className);
+                    console.log("thumbnailsUnactive[ii].classList", thumbnailsUnactive[ii].classList);
+                    thumbnailsUnactive[ii].classList.toggle("active", false)
+                    console.log("toggle su class list")
+                    console.log("thumbnailsUnactive[ii].className =", thumbnailsUnactive[ii].className);
+          */
+            //a tutte le thumb che non sono quella cliccate  rimuovo l'active
+            thumbnailsUnactive[ii].classList.toggle("active", false);
+            //a tutte le slide che non sono quella correlata alla thumb cliccata aggiungo la
+            sliderImagesInvisible[ii].classList.toggle("visually-hidden", true);
+        }
+
+    });
+
+}
+
+/* 
+      //devo ristabilire l'ordine di successione in base all'ultima thumb cliccata
+      const oldActiveThumb = thumbnailBtn
+      console.log("OLD T", oldActiveThumb)
+ 
+     // dopo aver cliccato sulal tumb se poi clicco next 
+ 
+ 
+ */
+
+//INIZIO FUNZIONE NEXT  **************************************
 btnNext.addEventListener("click", function () {
 
-    /* recuper le variabili Old prima del counter */
+    // recuper le variabili Old prima del counter 
     //recupero la thumbnail corrispondente alla posizione start (al click diventa 1)
     const oldActiveThumb = document.querySelector(`#thumbnails-container> :nth-child(${counter + 1})`);
     console.log("OLD T", oldActiveThumb);
@@ -156,7 +243,7 @@ btnNext.addEventListener("click", function () {
     //recupero la slide corrispondente alla posizione start (al click diventa 1)
     const oldSliderImg = document.querySelector(`#slider-container> :nth-child(${counter + 1})`);
 
-    /* a ogni cick incremento il counter di 1. è lo stesso che scrivere counter+=1 */
+    // a ogni cick incremento il counter di 1. è lo stesso che scrivere counter+=1 
     counter++
     console.log("btnNext click", counter)
 
@@ -194,9 +281,9 @@ btnNext.addEventListener("click", function () {
 
 
 
-/* INIZIO FUNZIONE PREV ***************************************/
+//INIZIO FUNZIONE PREV ***************************************
 btnPrev.addEventListener("click", function () {
-    /* recuper le variabili Old prima del counter */
+    // recuper le variabili Old prima del counter 
     //recupero la thumbnail corrispondente alla posizione start (al click diventa 1)
     const oldActiveThumb = document.querySelector(`#thumbnails-container> :nth-child(${counter + 1})`);
     console.log("OLD T", oldActiveThumb);
@@ -204,7 +291,7 @@ btnPrev.addEventListener("click", function () {
     //recupero la slide corrispondente alla posizione start (al click diventa 1)
     const oldSliderImg = document.querySelector(`#slider-container> :nth-child(${counter + 1})`);
 
-    /* a ogni cick incremento il counter di 1. è lo stesso che scrivere counter+=1 */
+    // a ogni cick incremento il counter di 1. è lo stesso che scrivere counter+=1 
     counter -= 1
     console.log("btnPrev click", counter)
 
@@ -241,57 +328,4 @@ btnPrev.addEventListener("click", function () {
 });
 
 
-//se schiaccio una thumbnail allora le altre si disattivano e viene mostrata la slide img corrispondente
-
-for (i = 0; i < images.length; i++) {
-
-    //tumb che attivo al click
-    let thumbnailBtn = document.querySelector(`#thumbnails-container> :nth-child(${i + 1})`);
-    console.log(thumbnailBtn, "thumbnailBtn");
-
-    //array tutte le altre thumb
-    let thumbnailsUnactive = document.querySelectorAll(`#thumbnails-container> .thumbnail-card:not(:nth-child(${i + 1}))`);
-
-    console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
-
-
-    //slide che corrisponde alla tumb che cliccherò
-    let sliderImg = document.querySelector(`#slider-container> :nth-child(${i + 1})`);
-    //console.log(sliderImg, " sliderImg");
-
-    //array tutte le altre slider img da nascondere
-    let sliderImagesInvisible = document.querySelectorAll(`#slider-container> .slider-img:not(:nth-child(${i + 1}))`);
-    //console.log(sliderImagesInvisible, "sliderImages-to-disactivate");
-
-    thumbnailBtn.addEventListener("click", function () {
-        //console.log(thumbnailsUnactive, "thumbnail-to-disactivate");
-
-
-
-
-        sliderImg.classList.remove("visually-hidden");
-        thumbnailBtn.classList.add("active");
-
-
-        /******** CICLE IN THE CICLE!!!  ***********************************************************/
-        /* non si fa così ma mi serviva */
-        /* scusa florian dovevo provarci! */
-
-        for (ii = 0; ii < images.length - 1; ii++) {
-
-            /*      console.log("dentro for 2 CICLE IN THE CICLE .......................")
-                    console.log(i)
-                    console.log(ii)
-                    console.log("thumbnailsUnactive[ii]", thumbnailsUnactive[ii])
-                    console.log("thumbnailsUnactive[ii].className", thumbnailsUnactive[ii].className);
-                    console.log("thumbnailsUnactive[ii].classList", thumbnailsUnactive[ii].classList);
-                    thumbnailsUnactive[ii].classList.toggle("active", false)
-                    console.log("toggle su class list")
-                    console.log("thumbnailsUnactive[ii].className =", thumbnailsUnactive[ii].className);
-          */
-            thumbnailsUnactive[ii].classList.toggle("active", false);
-            sliderImagesInvisible[ii].classList.toggle("visually-hidden", true);
-        }
-
-    })
-}
+/* ho fatto un tentativo ma devo ribaltare tutto il ragionamento. DEBUG FAIL */
