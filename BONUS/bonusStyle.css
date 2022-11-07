@@ -24,28 +24,41 @@ h4 {
 
 /*** CLASS UTILITIES ************************/
 /* bottoni */
+
 .my-btn {
-    position: absolute;
     width: fit-content;
-    left: 50%;
-    transform: translateX(-50%);
     display: block;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
-    opacity: .5;
     background-color: rgb(255, 1, 1);
     color: white;
     font-size: 1.4rem;
-    z-index: 200;
+    z-index: 4000;
     border: none;
 }
-
 .my-btn:hover {
-    opacity: 1;
+    background-color: rgb(250, 151, 151);
+    color: rgb(255, 0, 0);
+    font-weight: bold;
 }
 
 
 /* thumbnails (img contiente anche il label, sarebbe più corretto thumbnail-card */
+
+.col-2 .my-btn{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+.col-10 .my-btn{
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.slider-btn-container {
+    padding:50px
+
+}
 
 .thumbnail-card {
     height: 20%;
