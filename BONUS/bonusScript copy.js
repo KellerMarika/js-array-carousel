@@ -53,11 +53,11 @@ const svgGroups = [
 
 
     `<div class="svg-container f1">
-
-    <svg class="living f1" width="439" height="430" viewBox="0 0 439 430" fill="none"
+    <!---- F1 SVG GROUP----------->
+    <svg class="f1 floorplan" width="439" height="430" viewBox="0 0 439 430" fill="none"
         xmlns="http://www.w3.org/2000/svg">
 
-        <path d="M436.5 3H172H11L6.5 194L105 196V427H271.5V326.5H405.5V162H436.5V3Z" fill="#D9D9D9"
+        <path  class="living f1"  d="M436.5 3H172H11L6.5 194L105 196V427H271.5V326.5H405.5V162H436.5V3Z" fill="#D9D9D9"
             fill-opacity="" stroke="" stroke-opacity="" stroke-width="" />
 
         <path class="bath f1" d="M105.5 196L6.5 194L3 327.5H105.5V196Z" fill="#D9D9D9" fill-opacity="" stroke=""
@@ -66,8 +66,8 @@ const svgGroups = [
 </div>`
 
     , `<div class="svg-container f2">
-            <!---- SECOND SVG GROUP----------->
-            <svg width="440" height="429" viewBox="0 0 440 429" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!---- F2 SVG GROUP----------->
+            <svg class="f2 floorplan"  width="440" height="429" viewBox="0 0 440 429" fill="none" xmlns="http://www.w3.org/2000/svg">
 
                 <path class="study f2" d="M405.5 161H270.5V325.5H405.5V161Z" fill="#D9D9D9" fill-opacity="" stroke=""
                     stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
@@ -137,7 +137,7 @@ let counter = 0;
 let i = 0
 
 //FINCHE' i risulta < della lunghezza dell'array degli src(5 partendo da 0)
-while (i < imagesSrc.length) {
+for (i = 0; i < imagesSrc.length; i++) {
     console.log(i);
 
     //IMG:..........................
@@ -233,16 +233,16 @@ while (i < imagesSrc.length) {
 
         slide_El.classList.add(visibility);
         //console.log(slide_El.classList)
-
-
     }
 
-
-
-    while (i === 1) {
+    if (i === 1) {
         //aggiungi svggroup 1
-        slide_El.append(svgGroups[1]);
-        i++
+        slide_El.innerHTML+=svgGroups[i-1];
+
+    }
+    if (i === 2) {
+        //aggiungi svggroup 1
+        slide_El.innerHTML+=svgGroups[i-1];
     }
 
 
@@ -259,7 +259,7 @@ while (i < imagesSrc.length) {
     
         } */
 
-    i++
+
 
 }
 
