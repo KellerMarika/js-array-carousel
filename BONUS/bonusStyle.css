@@ -58,12 +58,12 @@ h4 {
 
 }
 
-.thumbnail-card {
+[class*="thumbnail-card"] {
     height: 20%;
     position: relative;
 }
 
-.thumbnail-card.active {
+[class*="thumbnail-card"].active {
     border: 6px solid red;
 }
 

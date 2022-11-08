@@ -120,6 +120,9 @@ let thumbnailLabel_El  //= "thumbnail-label" + (i + 1)
 //let visibility= "visually-hidden"  || " "_____________________
  */
 
+
+
+
 /********************************************
 CREAZIONE THUMB + LABEL && SLIDE + SVG
 *******************************************/
@@ -146,58 +149,110 @@ while (i < imagesSrc.length) {
     //aggiungo l'alt
     img_El.alt = imagesAlt[i]
 
-    console.log(img_El);
+    //console.log(img_El);
 
-    //THUMBNAILS:..........................
+    /* faccio un clone della img_element per poterlo inserire sia nelle thumb che nelle slide */
 
-    const thumbnail_El = document.createElement("div");
-
-    //classe nominale e numerata
-    let thumbnail_ClassName = "thumbnail-card " + (i + 1)
-
-    // classe funzionale 
-    let active = " "
-
-
-
-
-
-
+    img_El
+    const img_Elcloned = img_El.cloneNode(true)
+    //console.log(img_Elcloned)
 
 
     //LABEL THUMB........................
 
-    //classe nominale e numerata
-    let thumbnailLabel_ClassName = "thumbnail-label" + (i + 1)
-
+    //creo l'elemento label thumb
     const thumbnailLabel_El = document.createElement("h4");
-    console.log(thumbnailLabel_El);
+    //console.log(thumbnailLabel_El);
+
+    //classe nominale e numerata
+    let thumbnailLabel_ClassName = `thumbnail-label-${i + 1}`
+
+    //aggiungo alla label thumb la classe nominale numerata
+    thumbnailLabel_El.classList.add(thumbnailLabel_ClassName);
+    //console.log(thumbnailLabel_El.classList);
+
+    //insetisco nel label la descrizione testuale delle immagini (alt)
+    thumbnailLabel_El.innerText = imagesAlt[i]
+
+
+    //THUMBNAILS:..........................
+
+    //creo l'elemento thumbnail
+    const thumbnail_El = document.createElement("div");
+    //classe nominale e numerata
+    let thumbnail_ClassName = "thumbnail-card-" + (i + 1)
+    //console.log(thumbnail_ClassName)
+    // classe funzionale 
+    let active /* = "" */// diventa ="active"solo se è la prima immagine  caricata
+
+    //aggiungo alla thumbnail la classe nominale numerata
+    thumbnail_El.classList.add(thumbnail_ClassName);
+    //  thumbnail_El.classList.add(active); //_______non posso aggiungere una classe vuota
+    //console.log(thumbnail_El.classList)
+    //console.log(thumbnail_El)
+
+
+    //inserisco l'immagine nella thumb
+    thumbnail_El.append(img_El)
+    //console.log(thumbnail_El)
+
+    //inserisco la label nella thumb
+    thumbnail_El.append(thumbnailLabel_El)
+    //console.log(thumbnail_El)
 
     //SLIDERIMGS:..........................
 
+    //creo l'elemento slide
+    const slide_El = document.createElement("div");
+    //console.log(slide_El);
     //classe nominale e numerata
-    let slide_ClassName = "slide" + (i + 1)
+    let slide_ClassName = "slide-" + (i + 1)
 
     // classe funzionale 
-    let visibility = "visually-hidden"
+    let visibility /* = "visually-hidden" */
 
-    const slide_El = document.createElement("div");
+    //aggiungo alla thumbnail la classe nominale numerata
+    slide_El.classList.add(slide_ClassName);
+    //console.log(slide_El)
+
+    //inserisco il doppione dell'immagine nella slide
+    slide_El.append(img_Elcloned)
+
+
+    /* aggiungo active al primo thumb */
+    if (i === 0) {
+
+        active = "active"
+
+        thumbnail_El.classList.add(active);
+        //console.log(thumbnail_El.classList)
+
+        /* aggiungo visibility (hidden) a tutte le slide che non sono al primo posto */
+    } else {
+        visibility = "visually-hidden"
+
+        slide_El.classList.add(visibility);
+        //console.log(slide_El.classList)
+
+
+    }
+
+
+
+    while (i === 1) {
+        //aggiungi svggroup 1
+        slide_El.append(svgGroups[1]);
+        i++
+    }
+
+
+    console.log(thumbnail_El);
     console.log(slide_El);
 
 
 
-    /*   while (i === 0) {
-  
-          active = "active"
-          visibility = ""
-      } */
 
     /* 
-        while (i === 1) {
-            //aggiungi svggroup 1
-    
-        }
-    
         i++
         while (i === 2) {
             //aggiungi svg group 2
