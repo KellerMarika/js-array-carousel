@@ -23,17 +23,22 @@ path {
     transform: scale(128%) translateY(112px) translateX(178px);
     top: 0;
     left: 0;
+    transition: opacity 1s;
+}
+
+.svg-opacity{
+opacity: 0%;
 }
 
 /* applico un livello solo alle slide che voglio pilotare con i dot */
-#slider-container .svg-container.f1::before {
+#slider-container .svg-container.PT::before {
     content: url(/BONUS/img/f1/floorplan\ 1.png);
     background-color: rgba(255, 255, 255, 0.329);
     width:300%;
     pointer-events: none;
     }
 
-    #slider-container .svg-container.f2::before {
+    #slider-container .svg-container.P1::before {
     content: url(/BONUS/img/f2/floorplan\ 2.png);
     background-color: rgba(255, 255, 255, 0.329);
     width:300%;

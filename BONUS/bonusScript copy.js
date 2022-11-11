@@ -53,33 +53,33 @@ const imagesAlt = ["panoramica"
 const svgGroups = [
 
 
-    `<div class="svg-container f1">
-    <!---- F1 SVG GROUP----------->
-    <svg class="f1 floorplan" width="439" height="430" viewBox="0 0 439 430" fill="none"
+    `<div class="svg-container PT">
+    <!---- PT SVG GROUP----------->
+    <svg class="PT floorplan" width="439" height="430" viewBox="0 0 439 430" fill="none"
         xmlns="http://www.w3.org/2000/svg">
 
-        <path  class="living f1"  d="M436.5 3H172H11L6.5 194L105 196V427H271.5V326.5H405.5V162H436.5V3Z" fill="#D9D9D9"
+        <path  class="living PT"  d="M436.5 3H172H11L6.5 194L105 196V427H271.5V326.5H405.5V162H436.5V3Z" fill="#D9D9D9"
             fill-opacity="" stroke="" stroke-opacity="" stroke-width="" />
 
-        <path class="bath f1" d="M105.5 196L6.5 194L3 327.5H105.5V196Z" fill="#D9D9D9" fill-opacity="" stroke=""
+        <path class="bath PT" d="M105.5 196L6.5 194L3 327.5H105.5V196Z" fill="#D9D9D9" fill-opacity="" stroke=""
             stroke-opacity="" stroke-width="" />
     </svg>
 </div>`
 
-    , `<div class="svg-container f2">
-            <!---- F2 SVG GROUP----------->
-            <svg class="f2 floorplan"  width="440" height="429" viewBox="0 0 440 429" fill="none" xmlns="http://www.w3.org/2000/svg">
+    , `<div class="svg-container P1">
+            <!---- P1 SVG GROUP----------->
+            <svg class="P1 floorplan"  width="440" height="429" viewBox="0 0 440 429" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-                <path class="study f2" d="M405.5 161H270.5V325.5H405.5V161Z" fill="#D9D9D9" fill-opacity="" stroke=""
+                <path class="study P1" d="M405.5 161H270.5V325.5H405.5V161Z" fill="#D9D9D9" fill-opacity="" stroke=""
                     stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
 
-                <path class="room f2" d="M271 160.5V3H437V160.5H271Z" fill="#D9D9D9" fill-opacity="" stroke=""
+                <path class="room P1" d="M271 160.5V3H437V160.5H271Z" fill="#D9D9D9" fill-opacity="" stroke=""
                     stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
 
-                <path class="corridor f2" d="M105.5 426V195H171.5V2.5H271V426H105.5Z" fill="#D9D9D9" fill-opacity=""
+                <path class="corridor P1" d="M105.5 426V195H171.5V2.5H271V426H105.5Z" fill="#D9D9D9" fill-opacity=""
                     stroke="" stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
 
-                <path class="bath f2" d="M105.5 195L6.5 193L3 326.5H105.5V195Z" fill="#D9D9D9" fill-opacity="" stroke=""
+                <path class="bath P1" d="M105.5 195L6.5 193L3 326.5H105.5V195Z" fill="#D9D9D9" fill-opacity="" stroke=""
                     stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
             </svg>
         </div>`
@@ -254,15 +254,21 @@ for (i = 0; i < imagesSrc.length; i++) {
         console.log(bottom_Btn);
         bottom_Btn.classList.add("PT");
         bottom_Btn.dataset.btnPt = "bottom"
-        bottom_Btn.addEventListener("click", switchTopView());
+        bottom_Btn.addEventListener("click", function () {
+            const svgPt = document.querySelector(".svg-container");
+            svgPt.classList.toggle("svg-opacity", true);
+        });
 
         top_Btn = createButton("Internal Design", "florplan-top");
         console.log(top_Btn);
         top_Btn.classList.add("PT");
-    }
+        top_Btn.dataset.btnPt = "top"
+        top_Btn.addEventListener("click", function () {
+            const svgPt = document.querySelector(".svg-container");
+            svgPt.classList.toggle("svg-opacity", false);
+        });
 
-
-    if (i === 2) {
+    } else if (i === 2) {
         //aggiungi svggroup 1
         slide_El.innerHTML += svgGroups[i - 1];
 
@@ -270,26 +276,21 @@ for (i = 0; i < imagesSrc.length; i++) {
         console.log(bottom_Btn);
         bottom_Btn.classList.add("P1");
         bottom_Btn.dataset.btnPt = "bottom"
-        bottom_Btn.addEventListener("click", switchTopView());
+        /*         bottom_Btn.addEventListener("click", switchTopView()); */
 
         top_Btn = createButton("Internal Design", "florplan-top");
         console.log(top_Btn);
         top_Btn.classList.add("P1");
-        }
+    }
 
 
 
-       sliderContainer_El.append(top_Btn);
-        sliderContainer_El.append(bottom_Btn); 
+    sliderContainer_El.append(top_Btn);
+    sliderContainer_El.append(bottom_Btn);
 
     console.log(thumbnail_El);
     console.log(slide_El);
     sliderContainer_El.append(slide_El);
-
-
-
-
-
 
 
     /* 
@@ -298,9 +299,6 @@ for (i = 0; i < imagesSrc.length; i++) {
             //aggiungi svg group 2
     
         } */
-
-
-
 }
 
 
@@ -327,15 +325,35 @@ function createButton(btnText, btnCssSelector) {
     return btn
 }
 
-
+/* 
 
 function switchTopView() {
 
+    svgGroups[i].classList.add("d-none");
 
+    
+
+
+} */
+
+
+/* i===1 ________________________________________ */
+/*  if (i === 0) {
+    //aggiungi svggroup 1
+    slide_El.innerHTML += svgGroups[i];//___________[i-1]
+
+    //creo dei bottoni a cui aggiungo un data name e che poi stampo in pagina
+    bottom_Btn = createButton("Floorplan", "florplan-bottom");
+    console.log(bottom_Btn);
+    bottom_Btn.classList.add("PT");
+    bottom_Btn.dataset.btnPt = "bottom"
+    bottom_Btn.addEventListener("click", switchTopView());
+
+    top_Btn = createButton("Internal Design", "florplan-top");
+    console.log(top_Btn);
+    top_Btn.classList.add("PT");
 }
-
-
-
+ */
 
 
 
