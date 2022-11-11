@@ -27,7 +27,8 @@ const btnTop = document.querySelector(".florplan-top");
 // btn floor plan 
 const btnBottom = document.querySelector(".florplan-bottom");
 //console.log(btnNext);
-
+let bottom_Btn
+let top_Btn
 
 /********************************************
                 ARRAY
@@ -154,7 +155,7 @@ for (i = 0; i < imagesSrc.length; i++) {
     /* faccio un clone della img_element per poterlo inserire sia nelle thumb che nelle slide */
 
     img_El
-    const img_Elcloned = img_El.cloneNode(true)
+    const img_Elcloned = img_El.cloneNode(true);
     //console.log(img_Elcloned)
 
 
@@ -170,7 +171,6 @@ for (i = 0; i < imagesSrc.length; i++) {
     //aggiungo alla label thumb la classe nominale numerata
     thumbnailLabel_El.classList.add(thumbnailLabel_ClassName);
     //console.log(thumbnailLabel_El.classList);
-
     //insetisco nel label la descrizione testuale delle immagini (alt)
     thumbnailLabel_El.innerText = imagesAlt[i]
 
@@ -179,9 +179,12 @@ for (i = 0; i < imagesSrc.length; i++) {
 
     //creo l'elemento thumbnail
     const thumbnail_El = document.createElement("div");
+
+    thumbnail_El.dataset.thumbnailEl = i + 1
     //classe nominale e numerata
-    let thumbnail_ClassName = "thumbnail-card-" + (i + 1)
+    let thumbnail_ClassName = "thumbnail-card-" + (i + 1);
     //console.log(thumbnail_ClassName)
+
     // classe funzionale 
     let active /* = "" */// diventa ="active"solo se è la prima immagine  caricata
 
@@ -199,6 +202,11 @@ for (i = 0; i < imagesSrc.length; i++) {
     //inserisco la label nella thumb
     thumbnail_El.append(thumbnailLabel_El)
     //console.log(thumbnail_El)
+
+
+
+
+
 
     //SLIDERIMGS:..........................
 
@@ -235,19 +243,51 @@ for (i = 0; i < imagesSrc.length; i++) {
         //console.log(slide_El.classList)
     }
 
-    if (i === 1) {
-        //aggiungi svggroup 1
-        slide_El.innerHTML+=svgGroups[i-1];
 
+    /* i===1 ________________________________________ */
+    if (i === 0) {
+        //aggiungi svggroup 1
+        slide_El.innerHTML += svgGroups[i];//___________[i-1]
+
+        //creo dei bottoni a cui aggiungo un data name e che poi stampo in pagina
+        bottom_Btn = createButton("Floorplan", "florplan-bottom");
+        console.log(bottom_Btn);
+        bottom_Btn.classList.add("PT");
+        bottom_Btn.dataset.btnPt = "bottom"
+        bottom_Btn.addEventListener("click", switchTopView());
+
+        top_Btn = createButton("Internal Design", "florplan-top");
+        console.log(top_Btn);
+        top_Btn.classList.add("PT");
     }
+
+
     if (i === 2) {
         //aggiungi svggroup 1
-        slide_El.innerHTML+=svgGroups[i-1];
-    }
+        slide_El.innerHTML += svgGroups[i - 1];
 
+        bottom_Btn = createButton("Floorplan", "florplan-bottom");
+        console.log(bottom_Btn);
+        bottom_Btn.classList.add("P1");
+        bottom_Btn.dataset.btnPt = "bottom"
+        bottom_Btn.addEventListener("click", switchTopView());
+
+        top_Btn = createButton("Internal Design", "florplan-top");
+        console.log(top_Btn);
+        top_Btn.classList.add("P1");
+        }
+
+
+
+       sliderContainer_El.append(top_Btn);
+        sliderContainer_El.append(bottom_Btn); 
 
     console.log(thumbnail_El);
     console.log(slide_El);
+    sliderContainer_El.append(slide_El);
+
+
+
 
 
 
@@ -269,8 +309,30 @@ for (i = 0; i < imagesSrc.length; i++) {
 
 
 
+//FUNZIONE CREA BOTTONI:..........................
+function createButton(btnText, btnCssSelector) {
+    const btn = document.createElement("button");
+    //console.log(btn);
+    btn.type = "button"
+    btn.name = "button"
+
+    btn.classList.add("my-btn");
+    btn.classList.add(btnCssSelector);
+
+    const text = document.createElement("div");
+    text.innerHTML = btnText;
+
+    btn.append(btnText);
+
+    return btn
+}
 
 
+
+function switchTopView() {
+
+
+}
 
 
 
