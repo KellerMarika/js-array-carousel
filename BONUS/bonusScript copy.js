@@ -178,44 +178,30 @@ for (i = 0; i < imagesSrc.length; i++) {
     }
 
 
-    if (i === 0 || i === 2) {
+    if (i === 1 || i === 2) {
         //aggiungi svggroup 1
-        slide_El.innerHTML += svgGroups[i];
+        slide_El.innerHTML += svgGroups[i-1];
 
         //creo dei bottoni a cui aggiungo un data name e che poi stampo in pagina
         Switch_Btn = createButton("Floorplan", "florplan-switch");
         console.log(Switch_Btn);
         Switch_Btn.dataset.btnPt = "switch"
+        Switch_Btn.classList.remove("my-opacity");
+
         Switch_Btn.addEventListener("click", function () {
-            const svgPt = document.querySelector(".svg-container");
-            console.log(svgPt);
-      /*       svgPt.classList.toggle("svg-opacity", true);
-            slide_El.append(Switch_Btn); */
+            const svgContainer = document.querySelector(".svg-container");
+            console.log(svgContainer);
+            svgContainer.classList.toggle("my-opacity");
         });
-        sliderContainer_El.append(Switch_Btn);
     }
 
-
-
-   
-
-    console.log(thumbnail_El);
+    //console.log(thumbnail_El);
     console.log(slide_El);
     sliderContainer_El.append(slide_El);
 
-
-    /* 
-        i++
-        while (i === 2) {
-            //aggiungi svg group 2
-    
-        } */
 }
 
-
-
-
-
+sliderContainer_El.append(Switch_Btn);
 
 
 //FUNZIONE CREA BOTTONI:..........................
@@ -226,15 +212,21 @@ function createButton(btnText, btnCssSelector) {
     btn.name = "button"
 
     btn.classList.add("my-btn");
+    btn.classList.add("my-opacity");
     btn.classList.add(btnCssSelector);
-
     const text = document.createElement("div");
     text.innerHTML = btnText;
 
     btn.append(btnText);
-
     return btn
 }
+
+
+
+
+/*       svgPt.classList.toggle("svg-opacity", true);
+      slide_El.append(Switch_Btn); */
+
 
 
 

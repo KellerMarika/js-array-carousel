@@ -40,6 +40,17 @@ h4 {
     font-weight: bold;
 }
 
+.my-btn.florplan-switch{
+    position: absolute;
+    right: 0;
+    bottom:0;
+    transform: translateX(-80px) translateY(-50px) scale(130%);
+    opacity: .5;
+}
+
+.my-btn.florplan-switch.active{
+opacity: 1;
+}
 
 .col-2 .my-btn{
     position: absolute;
