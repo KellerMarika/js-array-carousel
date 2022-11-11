@@ -20,16 +20,9 @@ const btnPrev = document.querySelector(".btn-preview");
 const btnNext = document.querySelector(".btn-next");
 //console.log(btnNext);
 
-// btn top view 
-const btnTop = document.querySelector(".florplan-top");
-//console.log(btnPrev);
 
-// btn floor plan 
-const btnBottom = document.querySelector(".florplan-bottom");
-//console.log(btnNext);
-let bottom_Btn
-let top_Btn
 
+let Switch_Btn
 /********************************************
                 ARRAY
 *******************************************/
@@ -44,14 +37,13 @@ const imagesSrc = ["img/img1.png"
 
 //alt immagini
 const imagesAlt = ["panoramica"
-    , "top-view arredo PT"
-    , "top-view arredo 1P"
+    , "PT"
+    , "1P"
     , "living"
     , "pergolato"
 ]
 
 const svgGroups = [
-
 
     `<div class="svg-container PT">
     <!---- PT SVG GROUP----------->
@@ -83,54 +75,7 @@ const svgGroups = [
                     stroke-width="" stroke-opacity="0" stroke-opacity="" stroke-width="" />
             </svg>
         </div>`
-
 ]
-
-//LABEL THUMB
-// create h4 
-//class thumbnail-label senza virgolette
-
-
-/********************************************
-                CLASSI (creo nela wile)
-*******************************************/
-/* //THUMBNAILS:
-
-//classe nominale e numerata
-let thumbnail_El //= "thumbnail-card " + (i + 1)
-
-// classe funzionale 
-let active // "active" || " "
-
-
-//SLIDERIMGS:
-
-//classe nominale e numerata
-let slide_El  //= "slider-img" + (i + 1)
-
-// classe funzionale 
-let visibility //= "visually-hidden"  || " "
-
-
-//LABEL THUMB
-
-//classe nominale e numerata
-let thumbnailLabel_El  //= "thumbnail-label" + (i + 1)
-
-// classe funzionale 
-//let visibility= "visually-hidden"  || " "_____________________
- */
-
-
-
-
-/********************************************
-CREAZIONE THUMB + LABEL && SLIDE + SVG
-*******************************************/
-//thumb=(div.thumbnail-card.active>img[src][alt]+h4.label.visibility)
-
-//slide=(div.slide.visibility>img[src][alt])__________(dopo solo a 2 devo aggiungere le svg (wile 12))
-
 
 // contatore 
 let counter = 0;
@@ -149,16 +94,12 @@ for (i = 0; i < imagesSrc.length; i++) {
     img_El.src = imagesSrc[i]
     //aggiungo l'alt
     img_El.alt = imagesAlt[i]
-
     //console.log(img_El);
 
     /* faccio un clone della img_element per poterlo inserire sia nelle thumb che nelle slide */
-
     img_El
     const img_Elcloned = img_El.cloneNode(true);
     //console.log(img_Elcloned)
-
-
     //LABEL THUMB........................
 
     //creo l'elemento label thumb
@@ -174,9 +115,7 @@ for (i = 0; i < imagesSrc.length; i++) {
     //insetisco nel label la descrizione testuale delle immagini (alt)
     thumbnailLabel_El.innerText = imagesAlt[i]
 
-
     //THUMBNAILS:..........................
-
     //creo l'elemento thumbnail
     const thumbnail_El = document.createElement("div");
 
@@ -191,10 +130,8 @@ for (i = 0; i < imagesSrc.length; i++) {
     //aggiungo alla thumbnail la classe nominale numerata
     thumbnail_El.classList.add(thumbnail_ClassName);
     //  thumbnail_El.classList.add(active); //_______non posso aggiungere una classe vuota
-    //console.log(thumbnail_El.classList)
+
     //console.log(thumbnail_El)
-
-
     //inserisco l'immagine nella thumb
     thumbnail_El.append(img_El)
     //console.log(thumbnail_El)
@@ -203,10 +140,7 @@ for (i = 0; i < imagesSrc.length; i++) {
     thumbnail_El.append(thumbnailLabel_El)
     //console.log(thumbnail_El)
 
-
-
-
-
+    thumbnailsContainer_El.append(thumbnail_El);
 
     //SLIDERIMGS:..........................
 
@@ -244,49 +178,26 @@ for (i = 0; i < imagesSrc.length; i++) {
     }
 
 
-    /* i===1 ________________________________________ */
-    if (i === 0) {
+    if (i === 0 || i === 2) {
         //aggiungi svggroup 1
-        slide_El.innerHTML += svgGroups[i];//___________[i-1]
+        slide_El.innerHTML += svgGroups[i];
 
         //creo dei bottoni a cui aggiungo un data name e che poi stampo in pagina
-        bottom_Btn = createButton("Floorplan", "florplan-bottom");
-        console.log(bottom_Btn);
-        bottom_Btn.classList.add("PT");
-        bottom_Btn.dataset.btnPt = "bottom"
-        bottom_Btn.addEventListener("click", function () {
+        Switch_Btn = createButton("Floorplan", "florplan-switch");
+        console.log(Switch_Btn);
+        Switch_Btn.dataset.btnPt = "switch"
+        Switch_Btn.addEventListener("click", function () {
             const svgPt = document.querySelector(".svg-container");
-            svgPt.classList.toggle("svg-opacity", true);
+            console.log(svgPt);
+      /*       svgPt.classList.toggle("svg-opacity", true);
+            slide_El.append(Switch_Btn); */
         });
-
-        top_Btn = createButton("Internal Design", "florplan-top");
-        console.log(top_Btn);
-        top_Btn.classList.add("PT");
-        top_Btn.dataset.btnPt = "top"
-        top_Btn.addEventListener("click", function () {
-            const svgPt = document.querySelector(".svg-container");
-            svgPt.classList.toggle("svg-opacity", false);
-        });
-
-    } else if (i === 2) {
-        //aggiungi svggroup 1
-        slide_El.innerHTML += svgGroups[i - 1];
-
-        bottom_Btn = createButton("Floorplan", "florplan-bottom");
-        console.log(bottom_Btn);
-        bottom_Btn.classList.add("P1");
-        bottom_Btn.dataset.btnPt = "bottom"
-        /*         bottom_Btn.addEventListener("click", switchTopView()); */
-
-        top_Btn = createButton("Internal Design", "florplan-top");
-        console.log(top_Btn);
-        top_Btn.classList.add("P1");
+        sliderContainer_El.append(Switch_Btn);
     }
 
 
 
-    sliderContainer_El.append(top_Btn);
-    sliderContainer_El.append(bottom_Btn);
+   
 
     console.log(thumbnail_El);
     console.log(slide_El);
@@ -324,36 +235,6 @@ function createButton(btnText, btnCssSelector) {
 
     return btn
 }
-
-/* 
-
-function switchTopView() {
-
-    svgGroups[i].classList.add("d-none");
-
-    
-
-
-} */
-
-
-/* i===1 ________________________________________ */
-/*  if (i === 0) {
-    //aggiungi svggroup 1
-    slide_El.innerHTML += svgGroups[i];//___________[i-1]
-
-    //creo dei bottoni a cui aggiungo un data name e che poi stampo in pagina
-    bottom_Btn = createButton("Floorplan", "florplan-bottom");
-    console.log(bottom_Btn);
-    bottom_Btn.classList.add("PT");
-    bottom_Btn.dataset.btnPt = "bottom"
-    bottom_Btn.addEventListener("click", switchTopView());
-
-    top_Btn = createButton("Internal Design", "florplan-top");
-    console.log(top_Btn);
-    top_Btn.classList.add("PT");
-}
- */
 
 
 

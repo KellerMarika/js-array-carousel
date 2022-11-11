@@ -53,10 +53,10 @@ h4 {
     padding: 10px 20px;
 }
 
-.thumbnails-btn-container {
+/* .thumbnails-btn-container {
     padding:50px
 
-}
+} */
 
 [class*="thumbnail-card"] {
     height: 20%;
@@ -67,7 +67,7 @@ h4 {
     border: 6px solid red;
 }
 
-.thumbnail-label {
+ [class*="thumbnail-label"]{
     text-align: right;
     position: absolute;
     z-index: 100;
@@ -84,15 +84,15 @@ h4 {
 display: none;
 } */
 
-.thumbnail-card img {
+[class*="thumbnail-card"] img {
     filter: brightness(0.4);
 }
 
-.thumbnail-card.active img {
+[class*="thumbnail-card"].active img {
     filter: brightness(1);
 }
 
-.thumbnail-card:hover img {
+[class*="thumbnail-card"]:hover img {
     filter: brightness(1);
 }
 
